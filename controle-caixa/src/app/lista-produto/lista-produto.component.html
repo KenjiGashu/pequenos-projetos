@@ -1,0 +1,7 @@
+<h2>lista produto</h2>
+{{mensagem}}
+<ul class="heroes">
+  <li *ngFor="let produto of produtos">
+    <span class="badge">{{produto.id}}</span> {{produto.preco.preco}}
+  </li>
+</ul>
