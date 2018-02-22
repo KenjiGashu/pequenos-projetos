@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <head>
+    <meta charset="utf-8"/>
     <script src="/telas/js/angularjs1.6.7.js"></script>
+    <script src="/telas/js/mainModule.js"></script>
     <link rel="stylesheet" type="text/css" href="/telas/css/algum.css">
+    <link rel="stylesheet" type="text/css" href="/telas/css/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.css"/>
 </head>
-<Body>
+<Body ng-app="mainModule">
     <div class="nav-container">
 	<div class="nav-class">
 	    <a href="#home" class="nav-item">Home</a>
@@ -12,15 +15,45 @@
 	    <a href="#about" class="nav-item">About</a>
 	</div>
     </div>
-    <h1>Produtos</h1>
+    <div ng-controller="controladorTeste">
+	<h1>compras</h1>
 
-    <div> 
-	<ul> 
-	    <li> </li>
-	    <li> </li>
-	    <li> </li>
-	</ul>
+	<adicionar-compra>
+	    <div class="modal-heading">Nova Compra</div>
+	    <div class="modal-cont">
+		<span>Nome:</span><input ng-model="novoNome" type="text" name="nome" /><br>
+		<span>Preço:</span><input ng-model="novoValor" type="number" name="preco" /><br>
+		<span>Data:</span><input ng-init="$('#nova-data').datepicker()"
+					 ng-model="novaData" id="nova-data"
+					 type="date" name="data" /><br>
+		<span>Pessoa:</span><input ng-model="novaPessoa" type="text" name="pessoa" /><br>
+		<button ng-click="inserirCompra()">Salvar</button>
+	    </div>
+	</adicionar-compra>
     </div>
-    
 
+    <table class="tabela-compra" ng-controller="controladorTeste">
+	<tr class="compra-row-header">
+	    <td class="compra-cell-header">Produto</td>
+	    <td class="compra-cell-header">Preco</td>
+	    <td class="compra-cell-header">Data</td>
+	    <td class="compra-cell-header">Pessoa</td>
+	    <td class="compra-cell-header"></td>
+	    
+	</tr>
+	<tr class="compra-row" ng-click="selecionaCompra(compra)" ng-repeat="compra in compras">
+	    <td class="compra-cell">{{compra.name}}</td>
+	    <td class="compra-cell">{{compra.valor}}</td>
+	    <td class="compra-cell">{{compra.data}}</td>
+	    <td class="compra-cell">{{compra.pessoa}}</td>
+	    <td class="compra-cell"><i class="fas fa-bomb"></i> <i class="fas fa-pencil-alt"></i></td>
+	</tr>
+    </table>
+
+    <div ng-controller="controladorTeste">
+	<div ng-bind="compraSelecionada"></div>
+    </div>
+
+    
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
 </body>
