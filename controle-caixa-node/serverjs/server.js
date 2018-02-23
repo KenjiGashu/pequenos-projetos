@@ -6,10 +6,11 @@ var url = require('url');
 
 
 var server = http.createServer( (req, res) => {
-    console.log(url.parse(req.url));
+    var objurl = url.parse(req.url);
+    console.log(objurl);
     // console.log(req.headers);
     var filename = 'index.html';
-    var requrl = req.url;
+    var requrl = objurl.pathname;
     if(requrl == "/oi"){
 	console.log('teste do connect');
 	database.testebd();

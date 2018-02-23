@@ -41,9 +41,6 @@ a.nav-item:hover {
     background-color: #7986CB;
 }
 
-html{
-    background: #EDE7F6;
-}
 
 .tabela-compra {
     border-collapse: collapse;
@@ -158,7 +155,9 @@ body,.btn {
 }
 
 .modal-cont {
-  padding: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .modalactive {
@@ -168,10 +167,26 @@ body,.btn {
 }
 
 
-.icon-big {
-    font-size:3em;
-}
-
-a > i.cor-verde{
+i.cor-verde{
     color: #006064;
 }
+
+
+.flexgirl {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.flexboy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+input.width-auto{
+    width: auto;
+}
+
