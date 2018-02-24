@@ -11,11 +11,17 @@ var server = http.createServer( (req, res) => {
     // console.log(req.headers);
     var filename = 'index.html';
     var requrl = objurl.pathname;
-    if(requrl == "/oi"){
+    if(objurl.pathname == "/dbservice/"){
+	// extract query
+	var quer = objurl.query;
+	var args = quer.toString().split('=');
+	res.writeHead(200, {'content-type': 'text/plain'});
+	res.end('oi');
 	console.log('teste do connect');
 	database.testebd();
+	return;
     }
-    if(requrl != "/"){
+    else if(requrl != "/"){
 	filename = '.' + requrl;
 	fs.readFile(filename, (err, data) => {
 	    if(err){
