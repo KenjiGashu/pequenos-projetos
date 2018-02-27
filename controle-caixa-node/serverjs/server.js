@@ -11,14 +11,23 @@ var server = http.createServer( (req, res) => {
     // console.log(req.headers);
     var filename = 'index.html';
     var requrl = objurl.pathname;
+    
+
+
+    // tratando request de banco de dados
     if(objurl.pathname == "/dbservice/"){
 	// extract query
 	var quer = objurl.query;
 	var args = quer.toString().split('=');
-	res.writeHead(200, {'content-type': 'text/plain'});
-	res.end('oi');
-	console.log('teste do connect');
-	database.testebd();
+	
+	var callbackResponse = function(res, data){
+	    res.writeHead(200, {'content-type': 'application/json'});
+	    res.end(data);
+	};
+
+	// database.selectPessoa('araujo');
+ 	database.selectProdutosLivros(callbackResponse, res);
+	database.selectProdutosCds(callbackResponse, res);
 	return;
     }
     else if(requrl != "/"){

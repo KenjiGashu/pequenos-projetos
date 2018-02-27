@@ -39,7 +39,6 @@
 	  </column>
 	  
 	  <column name="data_inicio" type="date">
-	    <constraints nullable="false"/>
 	  </column>
 	  
 	  <column name="data_fim" type="date">
@@ -62,7 +61,6 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="tema" type="varchar(255)">
-	      <constraints nullable="false"/>
 	    </column>
             <column name="id_produto" type="integer">
                 <constraints references="produto(id)" foreignKeyName="FK_AUTOR_PRODUTO" nullable="false"/>
@@ -102,15 +100,12 @@
 	  </column>
 	  
 	  <column name="titulo" type="varchar(255)">
-	    <constraints nullable="false"/>
 	  </column>
 	  
 	  <column name="autor" type="varchar(255)">
-	    <constraints nullable="false"/>
 	  </column>
 	  
 	  <column name="editora" type="varchar(255)">
-	    <constraints nullable="false"/>
 	  </column>
 
 	  <column name="id_produto" type="integer">

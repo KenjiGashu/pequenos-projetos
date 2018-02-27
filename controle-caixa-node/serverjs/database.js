@@ -21,45 +21,75 @@ module.exports.testebd = function(){
 	    "AND table_type='BASE TABLE';";
 	client.query(query, (err, res) => {
 	    if(err) console.log(err);
-	    console.log(err, res.rows[0].oi);
+	    var str = res.rows[0].oi;
+	    console.log(str);
 	    client.end();
 	});
 
-	
-	
-	// parser.parseLiquibase(data.toString(), (properties) => {
-	//     console.log(properties);
-	//     // var client = new Client(properties);
-	//     var client = new Client({
-	// 	user: 'pe_de_chinelo',
-	// 	host: 'localhost',
-	// 	database: 'bd_chinelo',
-	// 	password: '',
-	// 	port: 5432,
-	//     })
-	//     client.connect();
-
-	//     client.query('SELECT NOW()', (err, res) => {
-	// 	console.log(err, res);
-	// 	client.end();
-	//     })
-	// });
     });
 };
 
-module.exports.selectPessoa = function(nome){
+module.exports.selectPessoa = function(nome, callback, response){
     fs.readFile('./resources/liquibase/liquibase-connection.properties', 'utf8', function (err, data) {
 	if (err) throw err;
+	console.log('conseguiu ler o arquivo');
 	var properties = JSON.parse(data.toString());
 	var client = new Client(properties);
 	client.connect();
-	client.query('SELECT * FROM PESSOA', (err, res) => {
-	    console.log(err, res);
+	console.log('passou do connect');
+	var query= {
+	    text:'select * from pessoa where nome = $1;',
+	    values: [nome],
+	};
+	client.query(query, (err, res) => {
+	    if(err) console.log(err);
+	    callback(response, res);
 	    client.end();
 	});
+
     });
-    
 }
-module.exports.selectProduto = function(){
-    
+
+
+
+module.exports.selectProdutosLivros = function(nome){
+    fs.readFile('./resources/liquibase/liquibase-connection.properties', 'utf8', function (err, data) {
+	if (err) throw err;
+	console.log('conseguiu ler o arquivo');
+	var properties = JSON.parse(data.toString());
+	var client = new Client(properties);
+	client.connect();
+	console.log('passou do connect');
+	var query= {
+	    text:'select * from produto, livro where produto.id = id_produto;',
+	};
+	client.query(query, (err, res) => {
+	    if(err) console.log(err);
+	    callback(response, res);
+	    client.end();
+	});
+
+    });
 }
+
+
+module.exports.selectProdutosCds = function(nome){
+    fs.readFile('./resources/liquibase/liquibase-connection.properties', 'utf8', function (err, data) {
+	if (err) throw err;
+	console.log('conseguiu ler o arquivo');
+	var properties = JSON.parse(data.toString());
+	var client = new Client(properties);
+	client.connect();
+	console.log('passou do connect');
+	var query= {
+	    text:'select * from produto, cd where produto.id = id_produto;',
+	};
+	client.query(query, (err, res) => {
+	    if(err) console.log(err);
+	    callback(response, res);
+	    client.end();
+	});
+
+    });
+}
+

@@ -1,4 +1,5 @@
-var app = angular.module("mainModule", ['ngMaterial']);
+var database = require('database');
+var app = angular.module("mainModule", ['ngMaterial', 'database']);
 
 
 
@@ -39,7 +40,7 @@ app.controller('DialogCtrl', function($scope, $mdDialog) {
 
 
 
-app.controller("controladorTeste" , function($scope) {
+app.controller("controladorTeste" , ['database',function($scope) {
 
     $scope.changeTab = function(tabname){
 	$scope.tabShown = tabname;
@@ -50,7 +51,7 @@ app.controller("controladorTeste" , function($scope) {
 	console.log('on init esta sendo chamado em ControladorTeste\n Valor de TabShown= ' + $scope.tabShown);
     }
     $scope.tabShown;
-    $scope.novoNome;
+    $scope.novoProduto;
     $scope.novoValor;
     $scope.novaData;
     $scope.novaPessoa;
@@ -87,7 +88,7 @@ app.controller("controladorTeste" , function($scope) {
 	$scope.compraSelecionada.name = compra.name;
 	console.log($scope.compraSelecionada);
     }
-});
+}]);
 
 app.directive('adicionarCompra', function(){
     return {
@@ -118,4 +119,10 @@ app.directive('adicionarCompra', function(){
 	    });
 	},
     }
+});
+
+app.factory('databaseController', function(){
+    var database;
+    database = require('database');
+    return database;
 });
