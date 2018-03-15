@@ -1,3 +1,20 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url('../icomoon.eot'),
+    url('../icomoon.ttf') format('truetype'),
+    url('../icomoon.woff') format('woff'),
+    url('../icomoon.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon-disc:before {
+    font-family: 'icomoon';
+    content: "\e900";
+    font-size: inherit;
+ }
+
+
 .nav-class {
     display: inline-flex;
     min-height: 50px;
@@ -7,8 +24,6 @@
     border-radius: 10px;
     overflow: hidden;
 }
-
-
 
 
 .nav-class .nav-item {
@@ -29,6 +44,7 @@
     display: flex;
     margin-top: 30px;
     margin-bottom: 40px;
+    justify-content: end;
 }
 
 a.nav-item {
@@ -44,7 +60,8 @@ a.nav-item:hover {
 
 .tabela-compra {
     border-collapse: collapse;
-    width: 100%;
+    margin: auto;
+    max-width: 1024px;
 }
 
 .compra-row {
@@ -58,15 +75,16 @@ a.nav-item:hover {
     border-bottom: 2px black solid;
     border-collapse: collapse;
     text-align: center;
+    font-size: 1.5em;
 }
 
 .compra-row:nth-child(2n){
-    background-color: #E0F7FA;
+    /* background-color: #E0F7FA; */
     color: rgba(0,0,0,.87);
 }
 
 .compra-row:nth-child(2n+1){
-    background-color: #B2EBF2;
+    /* background-color: #D6DEE0; */
     color: rgba(0,0,0,.87);
 }
 
@@ -88,15 +106,20 @@ a.nav-item:hover {
 
 .compra-row-header {
     padding: 15px;
-    background-color: #006064;
-    color: #E0F7FA;
+    color: #006064;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 3em;
+    border-bottom: #006064 solid 5px;
 }
 
 .compra-cell-header {
     padding: 15px;
     text-align: center;
+}
+
+.compra-cell-header.active {
+    background-color: #666;
+    color: #fff;
 }
 
 
@@ -190,3 +213,73 @@ input.width-auto{
     width: auto;
 }
 
+.compra-row .escondido-talvez{
+    opacity: 0;
+    -webkit-transition: opacity 0.5s; /* Safari */
+    transition: opacity 0.5s;
+}
+
+.compra-row:hover .escondido-talvez {
+    opacity: 1;
+}
+
+.soma-tabela {
+    color: green;
+    font-size: 3em;
+    align-self: center;
+    font-weight: bold;
+}
+
+.dialog-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.dados-acima-tabela {
+    display: flex;
+    justify-content: end;
+    width: 60%;
+    margin: auto;
+    max-width: 1024px;
+}
+
+.centraliza-flexitem{
+    align-self: center;
+}
+
+.font-2em{
+    font-size: 2em;
+}
+
+.font-3em{
+    font-size: 3em;
+}
+
+.disp-flex{
+    display: flex;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.index-width{
+    width: 50%;
+    margin: auto;
+    max-width: 1024px;
+}
+
+span .icon-top-table{
+    width: 1.6em;
+    text-align: center;
+    line-height: 1.6em;
+}
+
+
+span .icon-top-table.active{
+    background: #666;
+    color: #fff;
+    border-radius: 50%;
+}

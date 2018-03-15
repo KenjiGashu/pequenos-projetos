@@ -7,9 +7,9 @@ var instance = axios.create({
 	port: 4200,
     }
 });
-instance.get('/dbservice/pessoa')
+instance.get(process.argv[2])
   .then(function (response) {
-    console.log(response);
+    console.log(response.data);
   })
   .catch(function (error) {
     console.log(error);

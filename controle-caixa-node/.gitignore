@@ -2,3 +2,6 @@
 **/.emacs-backups/**
 telas/css/fontawesome-free-5.0.6/
 resources/liquibase/postgresql-42.2.1.jar
+spec/
+lib/
+shuffle.js

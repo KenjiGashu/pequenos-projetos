@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <preConditions>
+        <runningAs username="pe_de_chinelo"/>
+    </preConditions>
+
+    <changeSet id="1" author="pe_de_chinelo">
+
+      <createTable tableName="pessoa">
+	<column name="id" type="bigint" startWith="1" autoIncrement="true">
+	    <constraints nullable="false" primaryKey="true"/>
+	</column>
+	<column name="nome" type="varchar(255)">
+	  <constraints nullable="false"/>
+	</column>
+	<column name="associado?" type="boolean">
+	</column>
+	<column name="cpf" type="varchar(14)">
+	</column>
+	<column name="rg" type="varchar(14)">
+	</column>
+      </createTable>
+	
+      	<createTable tableName="preco">
+	  <column name="id" type="bigint" startWith="1" autoIncrement="true">
+	    <constraints primaryKey="true" nullable="false" />
+	  </column>
+	  
+	  <column name="preco" type="money">
+	    <constraints nullable="false"/>
+	  </column>
+	  
+	  <column name="data_inicio" type="date">
+	  </column>
+	  
+	  <column name="data_fim" type="date">
+	  </column>
+
+	</createTable>
+
+	<createTable tableName="produto">
+	  <column name="id" type="bigint" startWith="1" autoIncrement="true">
+	    <constraints primaryKey="true" nullable="false" />
+	  </column>
+	  
+	  <column name="id_preco" type="integer">
+	    <constraints references="preco(id)" foreignKeyName="FK_PRODUTO_PRECO" nullable="false"/>
+	  </column>
+	</createTable>
+	
+        <createTable tableName="cd">
+            <column name="numero" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="tema" type="varchar(255)">
+	    </column>
+            <column name="id_produto" type="integer">
+                <constraints references="produto(id)" foreignKeyName="FK_AUTOR_PRODUTO" nullable="false"/>
+            </column> 
+        </createTable>
+
+	<createTable tableName="compra">
+	  <column name="id" type="bigint" startWith="1" autoIncrement="true">
+	    <constraints primaryKey="true" nullable="false"/>
+	  </column>
+
+	  <column name="id_produto" type="integer">
+	    <constraints references="produto(id)" foreignKeyName="FK_COMPRA_PRODUTO" nullable="false"/>
+	  </column>
+
+	  <column name="id_pessoa" type="integer">
+	    <constraints references="pessoa(id)" foreignKeyName="FK_COMPRA_PESSOA" nullable="false"/>
+	  </column>
+
+	  <column name="data" type="date">
+	    <constraints nullable="false"/>
+	  </column>	  
+	</createTable>
+
+	<createTable tableName="estoque">
+	  <column name="produto_id" type="integer">
+	    <constraints references="produto(id)" foreignKeyName="FK_ESTOQUE_PRODUTO" nullable="false"/>
+	  </column>
+	  <column name="quantidade" type="integer">
+	    <constraints nullable="false"/>
+	  </column>
+	</createTable>
+
+	<createTable tableName="livro">
+	  <column name="id" type="bigint" startWith="1" autoIncrement="true">
+	    <constraints primaryKey="true" nullable="false" />
+	  </column>
+	  
+	  <column name="titulo" type="varchar(255)">
+	  </column>
+	  
+	  <column name="autor" type="varchar(255)">
+	  </column>
+	  
+	  <column name="editora" type="varchar(255)">
+	  </column>
+
+	  <column name="id_produto" type="integer">
+	    <constraints references="produto(id)" foreignKeyName="FK_LIVRO_PRODUTO" nullable="false"/>
+	  </column>
+	</createTable>
+
+
+    </changeSet>
+
+
+</databaseChangeLog>
+

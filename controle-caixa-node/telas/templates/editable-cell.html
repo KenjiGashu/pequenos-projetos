@@ -1,0 +1,14 @@
+<td><input type="text" ng-model="compra.preco" /></td>
+<td ng-if="compra.titulo"><input type="text"  ng-model="selectedCompra.titulo" /></td>
+<td ng-if="compra.numero"><input type="text"  ng-model="selectedCompra.numero" /></td>
+
+<!-- <td class="compra-cell" style="color: green;"><input type="currency" />{{compra.preco | currency | R$}}</td>
+     <td ng-if="compra.titulo" class="compra-cell">{{compra.titulo}}</td>
+     <td ng-if="compra.numero" class="compra-cell">{{compra.numero}}</td> -->
+<td class="compra-cell">{{compra.data.getDate()+'/'+compra.data.getMonth()+1+'/'+compra.data.getFullYear()}}</td>
+<td class="compra-cell">{{compra.nome}}</td>
+<td class="compra-cell escondido-talvez"><i class="fa fa-bomb" ng-click="editCompra(compra)"></i> <i class="fa fa-pencil" ng-click="console.log(compra.tema)"></i></td>
+<td>
+    <button ng-click="saveCompra($index)">Save</button>
+    <button ng-click="reset()">Cancel</button>
+</td>

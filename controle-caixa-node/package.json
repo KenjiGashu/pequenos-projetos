@@ -4,7 +4,7 @@
   "description": "webapp pra controle de caixa",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "start": "node server.js"
   },
   "repository": {
@@ -29,8 +29,21 @@
     "angular-material": "^1.1.7",
     "angular-messages": "^1.6.9",
     "axios": "^0.18.0",
+    "cmdify": "0.0.4",
+    "express": "^4.16.3",
     "font-awesome": "^4.7.0",
+    "inquirer": "^5.1.0",
     "jquery": "^3.3.1",
-    "pg": "^7.4.1"
+    "pg": "^7.4.1",
+    "prompt": "^1.0.0",
+    "prompt-choices": "^4.0.5",
+    "shuffle-array": "^1.0.1"
+  },
+  "devDependencies": {
+    "jasmine": "^3.1.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1"
   }
 }
