@@ -9,14 +9,14 @@
     <link rel="stylesheet" type="text/css" href="angular-material/angular-material.css"/>
 </head>
 <Body ng-app="mainModule">
-    <div class="nav-container">
-	<div class="nav-class">
-	    <a href="#home" class="nav-item">Home</a>
-	    <a href="#Pessoas" class="nav-item">News</a>
-	    <a href="#Precos" class="nav-item">Contact</a>
-	    <a href="#Produtos" class="nav-item">About</a>
-	</div>
-    </div>
+    <!-- <div class="nav-container">
+	 <div class="nav-class">
+	 <a href="#home" class="nav-item">Home</a>
+	 <a href="#Pessoas" class="nav-item">News</a>
+	 <a href="#Precos" class="nav-item">Contact</a>
+	 <a href="#Produtos" class="nav-item">About</a>
+	 </div>
+	 </div> -->
 
     <!-- dialog de nova compra
     -->
@@ -27,16 +27,28 @@
 
 	<div class="dialog-content">
 	    <div class="soma-tabela" ng-controller="controladorTeste">{{soma | currency | R$}}</div>
-	    
-	    <button ng-click="showAdvanced($event)">
-		<i class="fa fa-plus cor-verde fa-5x"></i>
-	    </button>
-
+	    <!-- 
+		 <button ng-click="showAdvanced($event)">
+		 <i class="fa fa-plus cor-verde fa-5x"></i>
+		 </button> -->	    
 	    <div style="height: 100px;">
-		<span style="z-index: 4; padding: 9px 15px;background: aquamarine;border-radius: 100px;margin: 10px;position: absolute;/*! left: 5px; *//*! top: -5px; */right: 50px;"><i class="fa fa-bars"></i></span>
-		<span style="z-index: 3; padding: 9px 15px;background: aquamarine;border-radius: 100px;margin: 10px;position: absolute;/*! left: 5px; *//*! top: -5px; */right: 50px;"><i class="fa fa-user"></i></span>
-		<span style="z-index: 3; padding: 11px 15px;background: aquamarine;border-radius: 100px;margin: 10px 10px 10px 10px;/*! margin-top: 50px; */position: absolute;/*! top: 40px; *//*! left: -26px; */right: 50px;"><i class="fa fa-shopping-bag"></i></span>
-		<span style="z-index: 3; padding: 9px 15px;background: aquamarine;border-radius: 100px;margin: 10px;position: absolute;/*! top: 0px; *//*! left: -41px; */right: 50px;"><i class="fa fa-book"></i></span>
+		<span ng-click="menuClick()" class="font-3em clickable botao-mais"><i ng-class=" {'fa-times': menuOpen, 'fa-plus': menuClosed}" class="icon-top-table fa"></i></span>
+		<span ng-class="{'menu-open-user': menuOpen}" class="font-3em botao-adicionar clickable ">
+		    <i class="icon-top-table fa fa-user"></i>
+		    <i class="fa fa-plus mini-plus"> </i>
+		</span>
+		<span ng-class="{'menu-open-shopping': menuOpen}" class="font-3em botao-adicionar clickable ">
+		    <i class="icon-top-table fa fa-shopping-bag"></i>
+		    <i class="fa fa-plus mini-plus "> </i>
+		</span>
+		<span ng-class="{'menu-open-book': menuOpen}" class="font-3em botao-adicionar clickable ">
+		    <i class="icon-top-table fa fa-book"></i>
+		    <i class="fa fa-plus mini-plus "> </i>
+		</span>
+		<span ng-class="{'menu-open-exchange': menuOpen}" class="font-3em botao-adicionar clickable ">
+		    <i class="icon-top-table fa fa-exchange"></i>
+		    <i class="fa fa-plus mini-plus "> </i>
+		</span>
 		
 	    </div>
 	</div>
@@ -54,67 +66,25 @@
     <div ng-controller="controladorTeste">
 
 	<div class="disp-flex index-width" >
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('pessoa')"><i href="#" ng-class="{active : tabShown == 'pessoa'}" class="fa icon-top-table fa-user" ng-click=""></i></span>
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('compras')"><i href="#" ng-class="{active : tabShown == 'compras'}" class="fa icon-top-table fa-shopping-bag" ng-click=""></i></span>
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('livro')"><i href="#" ng-class="{active : tabShown == 'livro'}" class="fa icon-top-table fa-book" ng-click=""></i></span>
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('cd')"><i href="#" ng-class="{active : tabShown == 'cd'}" class="fa icon-top-table icon-disc" ng-click=""></i></span>
+	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('pessoa')"><i  ng-class="{active : tabShown == 'pessoa'}" class="fa icon-top-table fa-user" ng-click=""></i></span>
+	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('compras')"><i ng-class="{active : tabShown == 'compras'}" class="fa icon-top-table fa-shopping-bag" ng-click=""></i></span>
+	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('livro')"><i ng-class="{active : tabShown == 'livro'}" class="fa icon-top-table fa-book" ng-click=""></i></span>
+	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('cd')"><i ng-class="{active : tabShown == 'cd'}" class="fa icon-top-table icon-disc" ng-click=""></i></span>
+	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('transacao')"><i ng-class="{active : tabShown == 'transacao'}" class="fa icon-top-table fa-exchange" ng-click=""></i></span>
 	</div>
 
-	<table class="tabela-compra" ng-show="isTabShown('compras')" />
-	<tr class="compra-row-header">
-	    <td class="compra-cell-header" ng-click="changeFilter('preco')" ng-class="{active: rowOrder == 'preco'}" >Preco</td>
-	    <td class="compra-cell-header" ng-click="changeFilter('titulo')" ng-class="{active: rowOrder == 'titulo'}">Produto</td>
-	    <td class="compra-cell-header" ng-click="changeFilter('data')" ng-class="{active: rowOrder == 'data'}">Data</td>
-	    <td class="compra-cell-header" ng-click="changeFilter('nome')" ng-class="{active: rowOrder == 'nome'}">Pessoa</td>
-	    <td class="compra-cell-header"></td>
-	</tr>
-	
-	<tr class="compra-row" ng-click="selecionaRow(compra);" ng-repeat="compra in compras | orderBy: rowOrder" ng-include="getTemplateCompra(compra)">
-	    <!-- <td class="compra-cell" style="color: green;">{{compra.preco | currency | R$}}</td>
-		 <td ng-if="compra.titulo" class="compra-cell">{{compra.titulo}}</td>
-		 <td ng-if="compra.numero" class="compra-cell">{{compra.numero}}</td>
-		 <td class="compra-cell">{{compra.data.getDate()+'/'+compra.data.getMonth()+1+'/'+compra.data.getFullYear()}}</td>
-		 <td class="compra-cell">{{compra.nome}}</td>
-		 <td class="compra-cell escondido-talvez"><i class="fa fa-bomb" ng-click="editContact(compra)"></i> <i class="fa fa-pencil" ng-click="console.log(compra.tema)"></i></td> -->
-	</tr>
-    </table>
-    <!-- 
-	 <table class="tabela-compra" ng-show="tabShown=='pessoa'" ng-controller="controladorTeste">
-	 <tr class="compra-row-header">
-	 <td class="compra-cell-header" ng-click="changeFilter('nome')">Nome</td>
-	 <td class="compra-cell-header" ng-click="changeFilter('associado?')">Associado</td>
-	 <td class="compra-cell-header" ng-click="changeFilter('cpf')">CPF</td>
-	 <td class="compra-cell-header" ng-click="changeFilter('rg')">RG</td>
-	 <td class="compra-cell-header" ng-click="changeFilter('telefone')">Telefone</td>
-	 <td class="compra-cell-header"></td>
-	 
-	 </tr>
-	 <tr class="compra-row" ng-click="selecionaCompra(compra)" ng-repeat="pessoa in pessoas | orderBy: compraOrder" ng-include="getTemplate(compra)">
-	 <td class="compra-cell">{{compra.name}}</td>
-	 <td class="compra-cell">{{compra.valor}}</td>
-	 <td class="compra-cell">{{compra.data}}</td>
-	 <td class="compra-cell">{{compra.pessoa}}</td>
-	 <td class="compra-cell"><i class="fa fa-bomb"></i> <i class="fa fa-pencil"></i></td>
-	 </tr>
-	 </table>
+	<tabela-compra ng-show="isTabShown('compras')"></tabela-compra>
 
-	 <table class="tabela-compra" ng-show="tabShown=='livro'" ng-controller="controladorTeste">
-	 <tr class="compra-row-header">
-	 <td class="compra-cell-header">Produto</td>
-	 <td class="compra-cell-header">Preco</td>
-	 <td class="compra-cell-header">Data</td>
-	 <td class="compra-cell-header">Pessoa</td>
-	 <td class="compra-cell-header"></td>
-	 
-	 </tr>
-	 <tr class="compra-row" ng-click="selecionaCompra(compra)" ng-repeat="livro in livros">
-	 <td class="compra-cell">{{compra.name}}</td>
-	 <td class="compra-cell">{{compra.valor}}</td>
-	 <td class="compra-cell">{{compra.data}}</td>
-	 <td class="compra-cell">{{compra.pessoa}}</td>
-	 <td class="compra-cell"><i class="fa fa-bomb"></i> <i class="fa fa-pencil"></i></td>
-	 </tr>
-	 </table> -->
+	<tabela-transacao ng-show="isTabShown('transacao')"></tabela-transacao>
+	
+	<tabela-pessoa ng-show="isTabShown('pessoa')"></tabela-pessoa>
+
+	
+	<tabela-livro ng-show="isTabShown('livro')"></tabela-livro>
+
+	<tabela-cd ng-show="isTabShown('cd')"></tabela-cd>
+
+	
     </div>
 
 

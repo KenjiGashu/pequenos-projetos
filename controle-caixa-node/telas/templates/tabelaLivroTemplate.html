@@ -1,0 +1,39 @@
+<table class="tabela-compra">
+    <tr class="compra-row-header">
+	<td class="compra-cell-header" ng-click="changeFilter('titulo')" ng-class="{active : livroOrder == 'titulo'}">Titulo</td>
+	<td class="compra-cell-header" ng-click="changeFilter('autor')" ng-class="{active : livroOrder == 'autor'}">Autor</td>
+	<td class="compra-cell-header" ng-click="changeFilter('editora')" ng-class="{active : livroOrder == 'editora'}">Editora</td>
+	<td class="compra-cell-header"></td>
+	
+    </tr>
+    <tr class="compra-row" ng-repeat="livro in livros | orderBy: livroOrder">
+
+	<!-- no edita table -->
+	<td ng-hide="editavel" class="compra-cell">{{livro.titulo}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{livro.autor}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{livro.editora}}</td>
+	<td ng-hide="editavel" class="compra-cell escondido-talvez">
+	    <i class="fa fa-bomb clickable" ng-click="deletaLivro(livro)"></i>
+	    <i class="fa fa-pencil clickable" ng-click="editarLivro(livro); editavel = true"></i>
+	</td>
+
+	
+	<!-- editable table -->
+	<td class="texto-centro" ng-show="editavel" >
+	    <input class="texto-centro" type="text" ng-model="livroSelecionado.titulo" />
+	</td>
+	
+	<td class="texto-centro" ng-show="editavel">
+	    <input class="texto-centro" type="text"  ng-model="livroSelecionado.autor" />
+	</td>
+
+	<td class="texto-centro" ng-show="editavel">
+	    <input class="texto-centro" type="text"  ng-model="livroSelecionado.editora" />
+	</td>
+
+ 	<td ng-show="editavel" class="compra-cell escondido-talvez">
+	    <i class="fa fa-check clickable" ng-click="salvarLivro($index); editavel = false;"></i>
+	    <i class="fa fa-times clickable" ng-click="resetar(); editavel = false;"></i>
+	</td>
+    </tr>
+</table>

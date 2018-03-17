@@ -1,7 +1,0 @@
-<td class="compra-cell" style="color: green;">{{compra.preco | currency | R$}}</td>
-<td ng-if="compra.titulo" class="compra-cell">{{compra.titulo}}</td>
-<td ng-if="compra.numero" class="compra-cell">{{compra.numero}}</td>
-<td class="compra-cell">{{compra.data.getDate()+'/'+compra.data.getMonth()+1+'/'+compra.data.getFullYear()}}</td>
-<td class="compra-cell">{{compra.nome}}</td>
-<td class="compra-cell escondido-talvez"><i class="fa fa-bomb" ng-click="deletaCompra(compra)"></i> <i class="fa fa-pencil" ng-click="editaCompra(compra)"></i></td>
-

@@ -155,6 +155,79 @@ angular.module('databaseAccessModule', [])
 		});
 	    },
 
+	    getTransacaoAll: function(){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/all/',
+		});
+	    },
+	    getTransacaoPessoaNome: function(nome){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/pessoa/nome/' + nome,
+		});
+	    },
+	    getTransacaoPessoaAssociado: function(associado){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/pessoa/associado/' + associado,
+		});
+	    },
+	    getTransacaoPessoaCpf: function(cpf){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/pessoa/cpf/' + cpf,
+		});
+	    },
+	    getTransacaoPessoaRg: function(rg){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/pessoa/rg/' + rg,
+		});
+	    },
+	    getTransacaoLivroAll: function(){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/livro/all/',
+		});
+	    },
+	    getTransacaoLivroTitulo: function(titulo){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/livro/titulo/' + titulo,
+		});
+	    },
+	    getTransacaoLivroAutor: function(autor){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/livro/autor/' + autor,
+		});
+	    },
+	    getTransacaoLivroEditora: function(editora){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/livro/editora/' + editora,
+		});
+	    },
+	    getTransacaoCdAll: function(){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/cd/all/',
+		});
+	    },
+	    getTransacaoCdTema: function(tema){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/cd/tema/' + tema,
+		});
+	    },
+	    getTransacaoCdNumero: function(numero){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/cd/numero/' + numero,
+		});
+	    },
+
 	    
 	};
     }]);

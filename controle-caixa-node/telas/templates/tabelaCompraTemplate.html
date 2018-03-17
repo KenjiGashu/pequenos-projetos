@@ -1,0 +1,51 @@
+<table class="tabela-compra">
+    <tr class="compra-row-header">
+	<td class="compra-cell-header" ng-click="changeFilter('preco')" ng-class="{active: compraOrder == 'preco'}" >Preco</td>
+	<td class="compra-cell-header" ng-click="changeFilter('titulo')" ng-class="{active: compraOrder == 'titulo'}">Produto</td>
+	<td class="compra-cell-header" ng-click="changeFilter('data')" ng-class="{active: compraOrder == 'data'}">Data</td>
+	<td class="compra-cell-header" ng-click="changeFilter('nome')" ng-class="{active: compraOrder == 'nome'}">Pessoa</td>
+	<td class="compra-cell-header"></td>
+    </tr>
+    
+    <tr class="compra-row" ng-repeat="compra in compras | orderBy: compraOrder">
+	
+	<!-- no edita table -->
+	<td ng-hide="editavel" class="compra-cell" style="color: green;">{{compra.preco | currency | R$}}</td>
+	<td ng-hide="editavel" ng-if="compra.titulo" class="compra-cell">{{compra.titulo}}</td>
+	<td ng-hide="editavel" ng-if="compra.numero" class="compra-cell">{{compra.numero}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{compra.data.getDate()+'/'+compra.data.getMonth()+1+'/'+compra.data.getFullYear()}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{compra.nome}}</td>
+	<td ng-hide="editavel" class="compra-cell escondido-talvez">
+	    <i class="fa fa-bomb clickable" ng-click="deletaCompra(compra)"></i>
+	    <i class="fa fa-pencil clickable" ng-click="editarCompra(compra); editavel = true"></i>
+	</td>
+
+	
+	<!-- editable table -->
+	<td class="texto-centro" ng-show="editavel" >
+	    <input class="texto-centro" type="text" ng-model="compra.preco" />
+	</td>
+	
+	<td class="texto-centro" ng-show="editavel"  ng-if="compra.titulo">
+	    <input class="texto-centro" type="text"  ng-model="compraSelecionada.titulo" />
+	</td>
+	
+	<td class="texto-centro" ng-show="editavel"  ng-if="compra.numero">
+	    <input class="texto-centro" type="text"  ng-model="compraSelecionada.numero" />
+	</td>
+	
+ 	<td class="texto-centro" ng-show="editavel" class="compra-cell">
+	    <input class="texto-centro" type="date" ng-model="compraSelecionada.data" />
+	</td>
+
+	<td class="texto-centro" ng-show="editavel" class="compra-cell">
+	    <input class="texto-centro" type="text" ng-model="compraSelecionada.nome" />
+	</td>
+ 	<td ng-show="editavel" class="compra-cell escondido-talvez">
+	    <i class="fa fa-check clickable" ng-click="salvarCompra($index); editavel = false;"></i>
+	    <i class="fa fa-times clickable" ng-click="resetar(); editavel = false;"></i>
+	</td>
+
+    </tr>
+</table>
+

@@ -1,0 +1,54 @@
+<table class="tabela-compra">
+    <tr class="compra-row-header">
+	<td class="compra-cell-header" ng-click="changeFilter('nome')" ng-class="{active : pessoaOrder == 'nome'}">Nome</td>
+	<td class="compra-cell-header" ng-click="changeFilter('associado?')" ng-class="{active : pessoaOrder == 'associado?'}">Associado</td>
+	<td class="compra-cell-header" ng-click="changeFilter('cpf')" ng-class="{active : pessoaOrder == 'cpf'}">CPF</td>
+	<td class="compra-cell-header" ng-click="changeFilter('rg')" ng-class="{active : pessoaOrder == 'rg'}">RG</td>
+	<td class="compra-cell-header" ng-click="changeFilter('telefone')" ng-class="{active : pessoaOrder == 'telefone'}">Telefone</td>
+	<td class="compra-cell-header"></td>
+	
+    </tr>
+    <tr class="compra-row" ng-repeat="pessoa in pessoas | orderBy: pessoaOrder">
+
+	<!-- no edita table -->
+	<td ng-hide="editavel" class="compra-cell">{{pessoa.nome}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{pessoa["associado?"]}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{pessoa.cpf}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{pessoa.rg}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{pessoa.telefone}}</td>
+	<td ng-hide="editavel" class="compra-cell escondido-talvez">
+	    <i class="fa fa-bomb clickable" ng-click="deletaPessoa(pessoa)"></i>
+	    <i class="fa fa-pencil clickable" ng-click="editarPessoa(pessoa); editavel = true"></i>
+	</td>
+
+	
+	<!-- editable table -->
+	<td class="texto-centro" ng-show="editavel" >
+	    <input  type="text" ng-model="pessoaSelecionada.nome" />
+	</td>
+	
+	<td class="texto-centro" ng-show="editavel">
+	    <input  type="checkbox"  ng-model="pessoaSelecionada['associado?']" />
+	</td>
+
+	<td class="texto-centro" ng-show="editavel">
+	    <input  type="text"  ng-model="pessoaSelecionada.cpf" />
+	</td>
+	
+	<td class="texto-centro" ng-show="editavel">
+	    <input  type="text"  ng-model="pessoaSelecionada.rg" />
+	</td>
+	
+	<td class="texto-centro" ng-show="editavel">
+	    <input  type="text"  ng-model="pessoaSelecionada.telefone" />
+	</td>
+	
+
+ 	<td ng-show="editavel" class="compra-cell escondido-talvez">
+	    <i class="fa fa-check clickable" ng-click="salvarPessoa($index); editavel = false;"></i>
+	    <i class="fa fa-times clickable" ng-click="resetar(); editavel = false;"></i>
+	</td>
+
+	
+    </tr>
+</table>

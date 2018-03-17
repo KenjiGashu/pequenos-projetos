@@ -1,0 +1,35 @@
+<table class="tabela-compra">
+    <tr class="compra-row-header">
+	<td class="compra-cell-header" ng-click="changeFilter('numero')" ng-class="{active : cdOrder == 'numero'}">Número</td>
+	<td class="compra-cell-header" ng-click="changeFilter('tema')" ng-class="{active : cdOrder == 'tema'}">Tema</td>
+	<td class="compra-cell-header"></td>
+	
+    </tr>
+    <tr class="compra-row" ng-repeat="cd in cds | orderBy: cdOrder">
+
+	<!-- no edita table -->
+	<td ng-hide="editavel" class="compra-cell">{{cd.numero}}</td>
+	<td ng-hide="editavel" class="compra-cell">{{cd.tema}}</td>
+	<td ng-hide="editavel" class="compra-cell escondido-talvez">
+	    <i class="fa fa-bomb clickable" ng-click="deletaCd(cd)"></i>
+	    <i class="fa fa-pencil clickable" ng-click="editarCd(cd); editavel = true"></i>
+	</td>
+
+	
+	<!-- editable table -->
+	<td class="texto-centro" ng-show="editavel" >
+	    <input class="texto-centro" type="number" ng-model="cdSelecionado.numero" />
+	</td>
+	
+	<td class="texto-centro" ng-show="editavel">
+	    <input class="texto-centro" type="text"  ng-model="cdSelecionado.tema" />
+	</td>
+
+ 	<td ng-show="editavel" class="compra-cell escondido-talvez">
+	    <i class="fa fa-check clickable" ng-click="salvarCd($index); editavel = false;"></i>
+	    <i class="fa fa-times clickable" ng-click="resetar(); editavel = false;"></i>
+	</td>
+
+    </tr>
+</table>
+

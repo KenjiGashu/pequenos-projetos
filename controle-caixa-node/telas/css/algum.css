@@ -215,8 +215,6 @@ input.width-auto{
 
 .compra-row .escondido-talvez{
     opacity: 0;
-    -webkit-transition: opacity 0.5s; /* Safari */
-    transition: opacity 0.5s;
 }
 
 .compra-row:hover .escondido-talvez {
@@ -243,6 +241,7 @@ input.width-auto{
     width: 60%;
     margin: auto;
     max-width: 1024px;
+    margin-top: 40px;
 }
 
 .centraliza-flexitem{
@@ -267,7 +266,7 @@ input.width-auto{
 
 .index-width{
     width: 50%;
-    margin: auto;
+    margin-left: 20%;
     max-width: 1024px;
 }
 
@@ -282,4 +281,62 @@ span .icon-top-table.active{
     background: #666;
     color: #fff;
     border-radius: 50%;
+}
+
+.texto-centro {
+    text-align: center;
+}
+
+.botao-mais{
+    z-index: 4;
+    background: #666;
+    color: #fff;
+    border-radius: 50%;;
+    position: absolute;
+    /*! left: 5px; *//*! top: -5px; */
+    right: 50px;
+}
+
+.botao-adicionar{
+    z-index: 3;
+    background: #666;
+    color: #fff;
+    border-radius: 50%;;
+    position: absolute;
+    /*! left: 5px; *//*! top: -5px; */
+    right: 50px;
+    top: 0px;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all right 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+}
+
+.menu-open-user{
+    right: 189px;
+    top: -38px;
+}
+
+.menu-open-shopping{
+    right: 187px;
+    top: 53px;
+}
+
+.menu-open-book{
+    right: 119px;
+    top: 127px;
+}
+
+.menu-open-exchange{
+    top: 137px;
+    right: 16px;
+}
+
+.botao-adicionar .mini-plus{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #fff;
+    font-size: 0.3em;
 }

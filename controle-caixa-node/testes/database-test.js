@@ -5,20 +5,22 @@ var callbackResponse = function(res, data){
 };
 
 
-db.selectProdutosLivrosTitulo('o primeiro livro',callbackResponse, undefined);
-db.selectProdutosLivrosAutor('tetsushi',callbackResponse, undefined);
-db.selectProdutosLivrosEditora('natura',callbackResponse, undefined);
-db.selectProdutosLivrosAll(callbackResponse, undefined);
-db.selectProdutosCdsTema('agar agar',callbackResponse, undefined);
-db.selectProdutosCdsNumero('3',callbackResponse, undefined);
-db.selectProdutosCdsAll(callbackResponse, undefined);
-db.selectPessoaNome('kakaroto',callbackResponse, undefined);
-db.selectPessoaAssociado(false,callbackResponse, undefined);
-db.selectPessoaCpf('837464837',callbackResponse, undefined);
-db.selectPessoaRg('9398572o9',callbackResponse, undefined);
-db.selectCompraPessoaNome('ruju',callbackResponse, undefined);
-db.selectCompraLivroTitulo('i like to draw singsing',callbackResponse, undefined);
-db.selectCompraCdTema('mais um cd!',callbackResponse, undefined);
+console.log(db.selectProdutosLivrosTitulo('o primeiro livro').then(function(data){
+    return data.rows[0].titulo;
+}));
+// db.selectProdutosLivrosAutor('tetsushi',callbackResponse, undefined);
+// db.selectProdutosLivrosEditora('natura',callbackResponse, undefined);
+// db.selectProdutosLivrosAll(callbackResponse, undefined);
+// db.selectProdutosCdsTema('agar agar',callbackResponse, undefined);
+// db.selectProdutosCdsNumero('3',callbackResponse, undefined);
+// db.selectProdutosCdsAll(callbackResponse, undefined);
+// db.selectPessoaNome('kakaroto',callbackResponse, undefined);
+// db.selectPessoaAssociado(false,callbackResponse, undefined);
+// db.selectPessoaCpf('837464837',callbackResponse, undefined);
+// db.selectPessoaRg('9398572o9',callbackResponse, undefined);
+// db.selectCompraPessoaNome('ruju',callbackResponse, undefined);
+// db.selectCompraLivroTitulo('i like to draw singsing',callbackResponse, undefined);
+// db.selectCompraCdTema('mais um cd!',callbackResponse, undefined);
 	//db.testebd();
 // db.selectPessoa('araujo');
 // console.log('\n\n\n\n\n\n==========================TESTE SELECT LIVRO TITULO "O PRIMEIRO LIVRO" PRODUTO=========================');
