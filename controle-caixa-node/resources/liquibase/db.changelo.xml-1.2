@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="pesomorto (generated)" id="1521139145934-1">
+    <changeSet author="pesomorto (generated)" id="1521511004570-1">
         <createTable tableName="cd">
             <column autoIncrement="true" name="numero" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="pk_cd"/>
@@ -13,7 +13,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-2">
+    <changeSet author="pesomorto (generated)" id="1521511004570-2">
         <createTable tableName="compra">
             <column autoIncrement="true" name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="pk_compra"/>
@@ -29,9 +29,9 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-3">
+    <changeSet author="pesomorto (generated)" id="1521511004570-3">
         <createTable tableName="estoque">
-            <column name="produto_id" type="INT">
+            <column name="id_produto" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="quantidade" type="INT">
@@ -39,7 +39,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-4">
+    <changeSet author="pesomorto (generated)" id="1521511004570-4">
         <createTable tableName="livro">
             <column autoIncrement="true" name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="pk_livro"/>
@@ -58,7 +58,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-5">
+    <changeSet author="pesomorto (generated)" id="1521511004570-5">
         <createTable tableName="pessoa">
             <column autoIncrement="true" name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="pk_pessoa"/>
@@ -72,7 +72,7 @@
             <column name="telefone" type="VARCHAR(20)"/>
         </createTable>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-6">
+    <changeSet author="pesomorto (generated)" id="1521511004570-6">
         <createTable tableName="preco">
             <column autoIncrement="true" name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="pk_preco"/>
@@ -86,7 +86,7 @@
             <column name="data_fim" type="date"/>
         </createTable>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-7">
+    <changeSet author="pesomorto (generated)" id="1521511004570-7">
         <createTable tableName="produto">
             <column autoIncrement="true" name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="pk_produto"/>
@@ -96,7 +96,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-8">
+    <changeSet author="pesomorto (generated)" id="1521511004570-8">
         <createTable tableName="transacao">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="transacao_pkey"/>
@@ -114,22 +114,22 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-9">
+    <changeSet author="pesomorto (generated)" id="1521511004570-9">
         <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="cd" constraintName="fk_autor_produto" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="produto"/>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-10">
+    <changeSet author="pesomorto (generated)" id="1521511004570-10">
         <addForeignKeyConstraint baseColumnNames="id_pessoa" baseTableName="compra" constraintName="fk_compra_pessoa" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="pessoa"/>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-11">
+    <changeSet author="pesomorto (generated)" id="1521511004570-11">
         <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="compra" constraintName="fk_compra_produto" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="produto"/>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-12">
-        <addForeignKeyConstraint baseColumnNames="produto_id" baseTableName="estoque" constraintName="fk_estoque_produto" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="produto"/>
+    <changeSet author="pesomorto (generated)" id="1521511004570-12">
+        <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="estoque" constraintName="fk_estoque_produto" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="produto"/>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-13">
+    <changeSet author="pesomorto (generated)" id="1521511004570-13">
         <addForeignKeyConstraint baseColumnNames="id_produto" baseTableName="livro" constraintName="fk_livro_produto" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="produto"/>
     </changeSet>
-    <changeSet author="pesomorto (generated)" id="1521139145934-14">
+    <changeSet author="pesomorto (generated)" id="1521511004570-14">
         <addForeignKeyConstraint baseColumnNames="id_preco" baseTableName="produto" constraintName="fk_produto_preco" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="preco"/>
     </changeSet>
 </databaseChangeLog>

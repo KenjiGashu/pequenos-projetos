@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Mon Mar 05 2018 18:33:01 GMT-0300 (-03)
+// Generated on Sun Mar 18 2018 15:45:57 GMT-0300 (-03)
 
 module.exports = function(config) {
   config.set({
@@ -10,14 +10,25 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'requirejs'],
+    frameworks: ['jasmine'],
 
 
+      plugins: [
+	  'karma-webpack',
+	  'karma-jasmine',
+	  'karma-chrome-launcher'
+	  
+      ],
     // list of files / patterns to load in the browser
-    files: [
-      {pattern: 'server				js/*.js', included: false},
-      {pattern: 'serverjs/*.js', included: false},
-      {pattern: 'testes/*.js', included: false}
+      files: [
+	  // JASMINE,
+	  // JASMINE_ADAPTER,
+	  'node_modules/angular/angular.js',
+	  'node_modules/angular-mocks/angular-mocks.js',   // for angular.mock.module and inject.
+	  'telas/js/databaseAccessModule.js',	  
+	  'testes/mock-database-controller.js',	  
+	  'testes/teste-database-angular-factory.js'
+	  // 'testes/temp.js'
     ],
 
 
@@ -57,7 +68,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

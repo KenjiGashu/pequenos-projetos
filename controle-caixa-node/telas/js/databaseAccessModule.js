@@ -15,7 +15,7 @@ angular.module('databaseAccessModule', [])
 		    url: '/dbservice/livro/autor/' + autor,
 		});
 	    },
-	    getProdutosLivrosAutorLivrosEditora: function(editora){
+	    getProdutosLivrosEditora: function(editora){
 		return $http({
 		    method: 'GET',
 		    url: '/dbservice/livro/editora/' + editora,
@@ -24,7 +24,7 @@ angular.module('databaseAccessModule', [])
 	    getProdutosLivrosAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/livro/all/',
+		    url: '/dbservice/livro/all',
 		});
 	    },
 	    getProdutosCdsTema: function(tema){
@@ -42,13 +42,13 @@ angular.module('databaseAccessModule', [])
 	    getProdutosCdsAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/cd/all/',
+		    url: '/dbservice/cd/all',
 		});
 	    },
 	    getPessoaAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/pessoa/all/',
+		    url: '/dbservice/pessoa/all',
 		});
 	    },
 	    getPessoaNome: function(nome) {
@@ -76,10 +76,16 @@ angular.module('databaseAccessModule', [])
 		    url: '/dbservice/pessoa/rg/' + rg,
 		});
 	    },
+	    getPessoaTelefone: function(telefone){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/pessoa/telefone/' + telefone,
+		});
+	    },
 	    getCompraAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/compra/all/',
+		    url: '/dbservice/compra/all',
 		});
 	    },
 	    getCompraPessoaNome: function(nome){
@@ -106,10 +112,16 @@ angular.module('databaseAccessModule', [])
 		    url: '/dbservice/compra/pessoa/rg/' + rg,
 		});
 	    },
+	    getCompraPessoaTelefone: function(telefone){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/compra/pessoa/telefone/' + telefone,
+		});
+	    },
 	    getCompraLivroAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/compra/livro/all/',
+		    url: '/dbservice/compra/livro/all',
 		});
 	    },
 	    getCompraLivroTitulo: function(titulo){
@@ -133,7 +145,7 @@ angular.module('databaseAccessModule', [])
 	    getCompraCdAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/compra/cd/all/',
+		    url: '/dbservice/compra/cd/all',
 		});
 	    },
 	    getCompraCdTema: function(tema){
@@ -148,7 +160,7 @@ angular.module('databaseAccessModule', [])
 		    url: '/dbservice/compra/cd/numero/' + numero,
 		});
 	    },
-	    getSoma: function(){
+	    getCompraSum: function(){
 		return $http({
 		    method: 'GET',
 		    url: '/dbservice/compra/soma/preco',
@@ -158,7 +170,7 @@ angular.module('databaseAccessModule', [])
 	    getTransacaoAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/transacao/all/',
+		    url: '/dbservice/transacao/all',
 		});
 	    },
 	    getTransacaoPessoaNome: function(nome){
@@ -185,10 +197,17 @@ angular.module('databaseAccessModule', [])
 		    url: '/dbservice/transacao/pessoa/rg/' + rg,
 		});
 	    },
+	    getTransacaoPessoaTelefone: function(telefone){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/pessoa/telefone/' + telefone,
+		});
+	    },
+	    
 	    getTransacaoLivroAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/transacao/livro/all/',
+		    url: '/dbservice/transacao/livro/all',
 		});
 	    },
 	    getTransacaoLivroTitulo: function(titulo){
@@ -212,7 +231,7 @@ angular.module('databaseAccessModule', [])
 	    getTransacaoCdAll: function(){
 		return $http({
 		    method: 'GET',
-		    url: '/dbservice/transacao/cd/all/',
+		    url: '/dbservice/transacao/cd/all',
 		});
 	    },
 	    getTransacaoCdTema: function(tema){
@@ -227,7 +246,12 @@ angular.module('databaseAccessModule', [])
 		    url: '/dbservice/transacao/cd/numero/' + numero,
 		});
 	    },
-
+	    getTransacaoSum: function(){
+		return $http({
+		    method: 'GET',
+		    url: '/dbservice/transacao/soma/valor',
+		});
+	    },
 	    
 	};
     }]);

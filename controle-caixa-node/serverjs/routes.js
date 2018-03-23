@@ -16,7 +16,14 @@ router.route('/dbservice/livro/titulo/:titulo')
 router.route('/dbservice/livro/id/:id')
     .put(function(req, res){
 	console.log(req);
+    })
+    .delete(function(req, res){
+	console.log(req);
     });
+
+router.route('/dbservice/livro/livro/:livro').post(function(req, res) {
+    console.log(req);
+});
 
 router.route('/dbservice/livro/autor/:autor')
     .get(function(req, res){

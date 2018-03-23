@@ -23,68 +23,89 @@
 
 
     <!-- directive container to modal button and sum -->
-    <div ng-controller="DialogCtrl" class="dados-acima-tabela md-padding" id="popupContainer" ng-cloak>
+    <div class="body-container">
+	<div ng-controller="DialogCtrl" class="dados-acima-tabela md-padding" id="popupContainer" ng-cloak>
 
-	<div class="dialog-content">
-	    <div class="soma-tabela" ng-controller="controladorTeste">{{soma | currency | R$}}</div>
-	    <!-- 
-		 <button ng-click="showAdvanced($event)">
-		 <i class="fa fa-plus cor-verde fa-5x"></i>
-		 </button> -->	    
-	    <div style="height: 100px;">
-		<span ng-click="menuClick()" class="font-3em clickable botao-mais"><i ng-class=" {'fa-times': menuOpen, 'fa-plus': menuClosed}" class="icon-top-table fa"></i></span>
-		<span ng-class="{'menu-open-user': menuOpen}" class="font-3em botao-adicionar clickable ">
-		    <i class="icon-top-table fa fa-user"></i>
-		    <i class="fa fa-plus mini-plus"> </i>
-		</span>
-		<span ng-class="{'menu-open-shopping': menuOpen}" class="font-3em botao-adicionar clickable ">
-		    <i class="icon-top-table fa fa-shopping-bag"></i>
-		    <i class="fa fa-plus mini-plus "> </i>
-		</span>
-		<span ng-class="{'menu-open-book': menuOpen}" class="font-3em botao-adicionar clickable ">
-		    <i class="icon-top-table fa fa-book"></i>
-		    <i class="fa fa-plus mini-plus "> </i>
-		</span>
-		<span ng-class="{'menu-open-exchange': menuOpen}" class="font-3em botao-adicionar clickable ">
-		    <i class="icon-top-table fa fa-exchange"></i>
-		    <i class="fa fa-plus mini-plus "> </i>
-		</span>
+	    <div class="dialog-content">
+		<div class="soma-tabela" ng-controller="controladorTeste">{{soma | currency | R$}}</div>
+		<div>
+		    <span class="font-3em clickable" ng-click="menuClick()">
+			<i class="fa fa-bars icon-top-table"></i>
+		    </span>
+		    <div class="menu" ng-class="menuOpen" >
+			<div class="disp-flex" ng-click="showPessoaModal()">
+			    <span class="clickable font-3em"> <i class="fa fa-user position-relative icon-top-table"><i class="fa fa-plus mini-plus"></i></i> </span>
+			</div>
+			<div class="disp-flex" ng-click="showCompraModal()">
+			    <span class="clickable font-3em"> <i class="fa fa-shopping-bag position-relative icon-top-table"><i class="fa fa-plus mini-plus"></i></i></span>
+			</div>
+			<div class="disp-flex" ng-click="showLivroModal()">
+			    <span class="clickable font-3em"> <i class="fa fa-book position-relative icon-top-table"><i class="fa fa-plus mini-plus"></i></i></span>
+			</div>
+			<div class="disp-flex" ng-click="showTransacaoModal()">
+			    <span class="clickable font-3em"> <i class="fa fa-exchange position-relative icon-top-table"><i class="fa fa-plus mini-plus"></i></i></span>
+			</div>
+			<div class="disp-flex" ng-click="showCdModal()">
+			    <span class="clickable font-3em"> <i class="fa icon-disc position-relative icon-top-table"><i class="fa fa-plus mini-plus"></i></i></span>
+			</div>
+		    </div>
+		</div>
 		
+		<!-- <div style="height: 100px;">
+		     <span ng-click="menuClick()" class="font-3em clickable botao-mais"><i ng-class=" {'fa-times': menuOpen, 'fa-plus': menuClosed}" class="icon-top-table fa"></i></span>
+		     <span ng-class="{'menu-open-user': menuOpen}" class="font-3em botao-adicionar clickable ">
+		     <i class="icon-top-table fa fa-user"></i>
+		     <i class="fa fa-plus mini-plus"> </i>
+		     </span>
+		     <span ng-class="{'menu-open-shopping': menuOpen}" class="font-3em botao-adicionar clickable ">
+		     <i class="icon-top-table fa fa-shopping-bag"></i>
+		     <i class="fa fa-plus mini-plus "> </i>
+		     </span>
+		     <span ng-class="{'menu-open-book': menuOpen}" class="font-3em botao-adicionar clickable ">
+		     <i class="icon-top-table fa fa-book"></i>
+		     <i class="fa fa-plus mini-plus "> </i>
+		     </span>
+		     <span ng-class="{'menu-open-exchange': menuOpen}" class="font-3em botao-adicionar clickable ">
+		     <i class="icon-top-table fa fa-exchange"></i>
+		     <i class="fa fa-plus mini-plus "> </i>
+		     </span>
+		     
+		     </div>  -->
 	    </div>
-	</div>
 
-	<div style="visibility: hidden">
-	    <div class="md-dialog-container" id="myDialog">
-		<md-dialog layout-padding>
+	    <div style="visibility: hidden">
+		<div class="md-dialog-container" id="myDialog">
+		    <md-dialog layout-padding>
 
-		</md-dialog>
+		    </md-dialog>
+		</div>
 	    </div>
+
 	</div>
 
-    </div>
+	<div ng-controller="controladorTeste">
 
-    <div ng-controller="controladorTeste">
+	    <div class="disp-flex" >
+		<span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('pessoa')"><i  ng-class="{active : tabShown == 'pessoa'}" class="fa icon-top-table fa-user" ng-click=""></i></span>
+		<span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('compras')"><i ng-class="{active : tabShown == 'compras'}" class="fa icon-top-table fa-shopping-bag" ng-click=""></i></span>
+		<span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('livro')"><i ng-class="{active : tabShown == 'livro'}" class="fa icon-top-table fa-book" ng-click=""></i></span>
+		<span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('cd')"><i ng-class="{active : tabShown == 'cd'}" class="fa icon-top-table icon-disc" ng-click=""></i></span>
+		<span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('transacao')"><i ng-class="{active : tabShown == 'transacao'}" class="fa icon-top-table fa-exchange" ng-click=""></i></span>
+	    </div>
 
-	<div class="disp-flex index-width" >
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('pessoa')"><i  ng-class="{active : tabShown == 'pessoa'}" class="fa icon-top-table fa-user" ng-click=""></i></span>
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('compras')"><i ng-class="{active : tabShown == 'compras'}" class="fa icon-top-table fa-shopping-bag" ng-click=""></i></span>
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('livro')"><i ng-class="{active : tabShown == 'livro'}" class="fa icon-top-table fa-book" ng-click=""></i></span>
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('cd')"><i ng-class="{active : tabShown == 'cd'}" class="fa icon-top-table icon-disc" ng-click=""></i></span>
-	    <span class="clickable compra-cell-header centraliza-flexitem font-3em" ng-click="changeTab('transacao')"><i ng-class="{active : tabShown == 'transacao'}" class="fa icon-top-table fa-exchange" ng-click=""></i></span>
+	    <tabela-compra style="width: 100%;" ng-show="isTabShown('compras')"></tabela-compra>
+
+	    <tabela-transacao ng-show="isTabShown('transacao')"></tabela-transacao>
+	    
+	    <tabela-pessoa style="width: 100%;" ng-show="isTabShown('pessoa')"></tabela-pessoa>
+
+	    
+	    <tabela-livro ng-show="isTabShown('livro')"></tabela-livro>
+
+	    <tabela-cd ng-show="isTabShown('cd')"></tabela-cd>
+
+	    
 	</div>
-
-	<tabela-compra ng-show="isTabShown('compras')"></tabela-compra>
-
-	<tabela-transacao ng-show="isTabShown('transacao')"></tabela-transacao>
-	
-	<tabela-pessoa ng-show="isTabShown('pessoa')"></tabela-pessoa>
-
-	
-	<tabela-livro ng-show="isTabShown('livro')"></tabela-livro>
-
-	<tabela-cd ng-show="isTabShown('cd')"></tabela-cd>
-
-	
     </div>
 
 

@@ -6,6 +6,7 @@ var msglogger = require('./messagelogger.js');
 var rotas = require('./routes.js');
 var express = require('express');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 
 
 // arguments
@@ -22,10 +23,18 @@ if(process.argv.length>1){
 
 var app = express();
 app.use(bodyParser.json());
-app.use('/', rotas);
+
 app.use(express.static('telas'));
 app.use(express.static('node_modules'));
-app.use(express.static('fonts')); 
+app.use(express.static('fonts'));
+app.use(morgan('combined'));
+// app.use('/', function(req, res, next){
+//     console.log('oi'  + req);
+//     next();
+// });
+
+
+app.use('/', rotas);
 
 app.listen(10000, function(){
 });

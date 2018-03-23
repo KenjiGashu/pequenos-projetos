@@ -25,25 +25,29 @@
 	
 	<!-- editable table -->
 	<td class="texto-centro" ng-show="editavel" >
-	    <input class="texto-centro" type="text" ng-model="transacao.valor" />
+	    <input class="width-100 texto-centro" type="text" ng-model="transacao.valor" />
+	</td>
+
+	<td class="texto-centro" ng-show="editavel"  ng-if="transacao.titulo">
+	    <input class="width-100 texto-centro" type="text"  ng-model="transacaoSelecionada.descricao" />
 	</td>
 	
-	<td class="texto-centro" ng-show="editavel"  ng-if="compra.titulo">
-	    <input class="texto-centro" type="text"  ng-model="transacaoSelecionada.titulo" />
+	<td class="texto-centro" ng-show="editavel"  ng-if="transacao.titulo">
+	    <input class="width-100 texto-centro" type="text"  ng-model="transacaoSelecionada.titulo" />
 	</td>
 	
-	<td class="texto-centro" ng-show="editavel"  ng-if="compra.tema">
-	    <input class="texto-centro" type="text"  ng-model="transacaoSelecionada.tema" />
+	<td class="texto-centro" ng-show="editavel"  ng-if="transacao.tema">
+	    <input class="width-100 texto-centro" type="text"  ng-model="transacaoSelecionada.tema" />
 	</td>
 	
  	<td class="texto-centro" ng-show="editavel" class="compra-cell">
-	    <input class="texto-centro" type="date" ng-model="transacaoSelecionada.data" />
+	    <input class="width-100 texto-centro" type="date" ng-model="transacaoSelecionada.data" />
 	</td>
 
 	<td class="texto-centro" ng-show="editavel" class="compra-cell">
-	    <input class="texto-centro" type="text" ng-model="transacaoSelecionada.nome" />
+	    <input class="width-100 texto-centro" type="text" ng-model="transacaoSelecionada.nome" />
 	</td>
- 	<td ng-show="editavel" class="compra-cell escondido-talvez">
+ 	<td ng-show="editavel" class="compra-cell">
 	    <i class="fa fa-check clickable" ng-click="salvarTransacao($index); editavel = false;"></i>
 	    <i class="fa fa-times clickable" ng-click="resetar(); editavel = false;"></i>
 	</td>

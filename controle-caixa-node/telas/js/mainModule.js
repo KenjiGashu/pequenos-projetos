@@ -5,14 +5,14 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
     .controller('DialogCtrl', function($scope, $mdDialog) {
 	$scope.status = '  ';
 	$scope.customFullscreen = false;
-
-	
-	$scope.menuOpen = false;
-	$scope.menuClosed = true;
+	$scope.menuOpen = undefined;
 
 	$scope.menuClick = function(){
-	    $scope.menuOpen = !$scope.menuOpen;
-	    $scope.menuClosed = !$scope.menuClosed;
+	    if(!$scope.menuOpen){
+		$scope.menuOpen = 'menu-open';
+	    } else{
+		$scope.menuOpen = undefined;
+	    }
 	};
 
 	$scope.showAdvanced = function(ev) {
@@ -130,17 +130,20 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 
 
     .controller("controladorTeste" , ['$scope', 'databaseService', function($scope, databaseService) {
-	this.$onInit = function(){
-	    $scope.tabShown = 'compras';
-	}
-	
 	$scope.novoProduto;
 	$scope.novoValor;
 	$scope.novaData;
 	$scope.novaPessoa;
 
 	$scope.soma;
-
+	this.$onInit = function(){
+	    $scope.tabShown = 'compras';
+	    databaseService.getCompraSum().then(function(response){
+		$scope.soma = response.data.rows[0].sum;
+	    },function(error){
+		throw error;
+	    });
+	}
 	
 	$scope.changeTab = function(tabname){
 	    $scope.tabShown = tabname;
@@ -155,17 +158,6 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 		return true;
 	    }
 	};
-
-	//select de todas as compras
-
-	databaseService.getSoma().then(function(response){
-	    console.log('soma: ');
-	    console.log(response.data.rows[0].sum);
-	    $scope.soma = response.data.rows[0].sum;
-	},function(error){
-	    throw error;
-	});
-
     }])
 
     .directive('adicionarCompra', function(){
@@ -176,19 +168,16 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 	    transclude: true,
 	    controller: function($scope){
 		$scope.hidden = true;
-		console.log('controlador'+$scope);
 		$scope.open = function(){
 		    $scope.hidden=false;
 		};
 	    },
 	    link: function( scope,ele,attrs ) {
 		$( ele ).find( '.trans-layer' ).on( 'click', function( event ) {
-		    console.log(ele);
 		    scope.hidden = true;
 		    scope.$apply();
 		})
 		$(ele).find('.trans-layer').keypress( function(event){
-		    console.log('keypress' + event);
 		    scope.hidden=true;
 		    scope.$apply();
 		});
@@ -208,17 +197,13 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 		    $scope.compraSelecionada = {};
 		    $scope.compras;
 		    // $scope.editavel = false;
-
 		    
 		    databaseService.getCompraAll().then(function(response){
 			$scope.compras = response.data.rows;
 			$scope.compras.forEach( (item, index) => {
-			    // console.log(item["associado?"]);
 			    item.preco = Number(item.preco);
 			    item.data = new Date(item.data);
 			} );
-			console.log('compras dentro da diretiva: ');
-			console.log(response.data.rows);
 		    }, function(error){
 			throw error;
 		    });
@@ -235,14 +220,10 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 		$scope.procuraCompra = function(){
 
 		    var id = $scope.compraSelecionada.id;
-		    console.log('procurando por: ' + id);
-		    console.log($scope.compras);
 		    var resultado = -1;
 		    for( i=0 ; i<$scope.compras.length ; i++){
-			console.log('ids : ' + $scope.compras[i].id +  ' : ' + id);
 			if($scope.compras[i].id == id){
 			    resultado = i;
-			    console.log('encontrado!    ' + $scope.compras[i]);
 			    continue;
 			}
 		    }
@@ -250,7 +231,6 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 		}
 		
 		$scope.salvarCompra = function(idx){
-		    console.log($scope.procuraCompra());
 		    angular.copy($scope.compras[idx], $scope.compraSelecionada);
 		    $scope.resetar();
 		};
@@ -286,8 +266,6 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 			    item.valor = Number(item.valor);
 			    item.data = new Date(item.data);
 			} );
-			console.log('transacoes dentro da diretiva: ');
-			console.log(response.data.rows);
 		    }, function(error){
 			throw error;
 		    });
@@ -334,8 +312,6 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 			// $scope.pessoas.forEach( (item, index) => {
 			//     item["associado?"] = 
 			// } );
-			console.log('pessoas dentro da diretiva: ');
-			console.log(response.data.rows);
 		    }, function(error){
 			throw error;
 		    });
@@ -390,8 +366,6 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 			//     item.preco = Number(item.preco);
 			//     item.data = new Date(item.data);
 			// } );
-			console.log('cds dentro da diretiva: ');
-			console.log(response.data.rows);
 		    }, function(error){
 			throw error;
 		    });
@@ -446,8 +420,6 @@ angular.module("mainModule", ['ngMaterial', 'databaseAccessModule'])
 			//     item.preco = Number(item.preco);
 			//     item.data = new Date(item.data);
 			// } );
-			console.log('livros dentro da diretiva: ');
-			console.log(response.data.rows);
 		    }, function(error){
 			throw error;
 		    });

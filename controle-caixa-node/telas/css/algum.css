@@ -60,8 +60,8 @@ a.nav-item:hover {
 
 .tabela-compra {
     border-collapse: collapse;
-    margin: auto;
-    max-width: 1024px;
+    table-layout: fixed;
+    width: 100%;
 }
 
 .compra-row {
@@ -75,7 +75,7 @@ a.nav-item:hover {
     border-bottom: 2px black solid;
     border-collapse: collapse;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.0em;
 }
 
 .compra-row:nth-child(2n){
@@ -108,7 +108,7 @@ a.nav-item:hover {
     padding: 15px;
     color: #006064;
     font-weight: bold;
-    font-size: 3em;
+    font-size: 1.5em;
     border-bottom: #006064 solid 5px;
 }
 
@@ -238,10 +238,7 @@ input.width-auto{
 .dados-acima-tabela {
     display: flex;
     justify-content: end;
-    width: 60%;
     margin: auto;
-    max-width: 1024px;
-    margin-top: 40px;
 }
 
 .centraliza-flexitem{
@@ -333,10 +330,34 @@ span .icon-top-table.active{
     right: 16px;
 }
 
-.botao-adicionar .mini-plus{
+.botao-adicionar .mini-plus,
+.mini-plus,
+span .mini-plus,
+i .mini-plus{
     position: absolute;
-    top: 12px;
-    right: 12px;
-    color: #fff;
+    top:14px;
     font-size: 0.3em;
+}
+
+.body-container{
+    width: 60%;
+    margin: auto;
+    max-width: 1024px;
+    margin-top: 50px;
+}
+
+.width-100{
+    width: 100%;
+}
+
+.menu{
+    opacity: 0;
+}
+
+.menu.menu-open{
+    opacity: 1;
+}
+
+.position-relative {
+    position: relative;
 }

@@ -1,0 +1,36 @@
+<div class="modal-heading" ng-keypress="console.log('modal heading'+$event)">Nova Compra</div>
+<div class="modal-cont" ng-keypress="console.log('modal cont'+$event)">
+    <div class="flexboy">
+	<label for="produto-novacompra">Produto:</label>
+	<label for="preco-novacompra">Preço:</label>
+	<label for="data-novacompra">Data:</label>
+	<label for="pessoa-novacompra">Pessoa:</label>
+    </div>
+
+    <div class="flexgirl">
+	<input id="produto-novacompra" ng-model="novoProduto" type="text" name="nome" />
+	<br>
+	
+	
+	<input class="width-auto" id="preco-novacompra" ng-model="novoValor" type="number" name="preco" />
+	<br>
+	
+	
+	<input id="data-novacompra"
+	       ng-init="$('#nova-data').datepicker()"
+	       ng-model="novaData" id="nova-data"
+	       type="date" name="data" />
+	<br>
+	
+	
+	<input id="pessoa-novacompra"
+	       ng-model="novaPessoa" type="text" name="pessoa" />
+	<br>
+	
+    </div>
+    
+    
+    
+
+    <button ng-click="inserirCompra()">Salvar</button>
+</div>
